@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const tasks = require('./routes/tasks');
-const port = 3000;
+const connectDB = require('./db/connect');
+require('dotenv').config(); // se instala con npm install dotenv
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@ MIDDLEWARE
 // parse form json, xq la form se manda con javascript, para poner el contenido en el req.body
@@ -16,8 +17,22 @@ app.get('/hello', (req, res) => {
 app.use('/api/v1/tasks', tasks);
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@ APP.LISTEN
-app.listen(port, console.log(`Server is listening on port ${port}`));
+const port = 3000;
 
+const start = async () => {
+   // asi solo si se puede conectar a la DB => levanta el servidor
+   try {
+      await connectDB(process.env.MONGO_URI);
+      app.listen(port, console.log(`Server is listening on port ${port}`));
+   } catch (error) {
+      console.log(error);
+   }
+};
+
+start();
+
+//
+//
 //app.get('/api/v1/tasks')          - get all the tasks
 //app.post('/api/v1/tasks')         - create a new task
 //app.get('/api/v1/tasks/:id')      - get single task
