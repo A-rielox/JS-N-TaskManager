@@ -5,14 +5,13 @@ const connectDB = require('./db/connect');
 require('dotenv').config(); // se instala con npm install dotenv
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@ MIDDLEWARE
+// static assets
+app.use(express.static('./public'));
+
 // parse form json, xq la form se manda con javascript, para poner el contenido en el req.body
 app.use(express.json());
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@ ROUTES
-app.get('/hello', (req, res) => {
-   res.send('Task Manager App');
-});
-
 // Para user las rutas de task
 app.use('/api/v1/tasks', tasks);
 
