@@ -2,7 +2,7 @@
 const Task = require('../models/task'); // el schema
 
 const getAllTasks = (req, res) => {
-   res.send('get all taskestsitas');
+   res.send('get all tasks');
 };
 
 // para el post en la ruta

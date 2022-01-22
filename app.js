@@ -21,6 +21,7 @@ const port = 3000;
 
 const start = async () => {
    // asi solo si se puede conectar a la DB => levanta el servidor
+   // mongoose.connect() la fcn q está en connectDB devuelve una promesa
    try {
       await connectDB(process.env.MONGO_URI);
       app.listen(port, console.log(`Server is listening on port ${port}`));
@@ -43,6 +44,9 @@ start();
 // en la cuenta de arielox@hot...
 // arielox
 // Pepimini63
+
+// MONGOOSE
+// mongoose lo ocupo entre otras cosas para darle la estructura a los datos, para conectarme con la DB
 
 // connection string
 // mongodb+srv://arielox:<password>@nodeexpressprojects.pbkch.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
