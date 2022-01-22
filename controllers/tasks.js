@@ -120,14 +120,3 @@ module.exports = {
 // A.findOneAndUpdate()                                      // returns Query
 
 // sin options 🌀 obtengo de vuelta el original del q paso la _id
-
-//
-//options
-// [options.returnDocument='before'] «String» Has two possible values, 'before' and 'after'. By default, it will return the document before the update was applied.
-// [options.lean] «Object» if truthy, mongoose will return the document as a plain JavaScript object rather than a mongoose document. See Query.lean() and the Mongoose lean tutorial.
-// [options.session=null] «ClientSession» The session associated with this query. See transactions docs.
-// [options.strict] «Boolean|String» overwrites the schema's strict mode option
-// [options.timestamps=null] «Boolean» If set to false and schema-level timestamps are enabled, skip timestamps for this update. Note that this allows you to overwrite timestamps. Does nothing if schema-level timestamps are not set.
-// [options.overwrite=false] «Boolean» By default, if you don't include any update operators in update, Mongoose will wrap update in $set for you. This prevents you from accidentally overwriting the document. This option tells Mongoose to skip adding $set. An alternative to this would be using Model.findOneAndReplace(conditions, update, options, callback).
-// [options.upsert=false] «Boolean» if true, and no documents found, insert a new document
-// [options.projection=null] «Object|String|Array<String>» optional fields to return, see Query.prototype.select()

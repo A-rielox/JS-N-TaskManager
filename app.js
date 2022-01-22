@@ -3,6 +3,7 @@ const app = express();
 const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect');
 require('dotenv').config(); // se instala con npm install dotenv
+const notFound = require('./middleware/not-found');
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@ MIDDLEWARE
 // static assets
@@ -15,6 +16,8 @@ app.use(express.json());
 // Para user las rutas de task
 app.use('/api/v1/tasks', tasks);
 
+// el catch-all ( para las q no existan )
+app.use(notFound); // tiene q ir al final para poder ponerlo asi
 //@@@@@@@@@@@@@@@@@@@@@@@@@ APP.LISTEN
 const port = 3000;
 
