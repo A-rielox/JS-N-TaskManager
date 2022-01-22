@@ -32,8 +32,20 @@ const createTask = async (req, res) => {
 //    }
 // }
 
-const getTask = (req, res) => {
-   res.json({ id: req.params.id });
+const getTask = async (req, res) => {
+   try {
+      const { id: taskID } = req.params;
+      const task = await Task.findOne({ _id: taskID });
+      // segun documentación, si no encuentra un match en DB => me retorna "null"
+      if (!task) {
+         return res.status(404).json({ msg: `No task with id ${taskID}` });
+      }
+
+      res.status(200).json({ task });
+   } catch (error) {
+      res.status(500).json({ msg: error });
+   } // si la _id tiene bien la estructura pero no existe => nos manda el "null" y pasa nuestro error 404
+   // si tiene caracteres de + o de - =>manda el error 500 ( si está mala la estructura del id )
 };
 
 const updateTask = (req, res) => {
