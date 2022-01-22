@@ -1,15 +1,24 @@
 // '/api/v1/tasks'
 const Task = require('../models/task'); // el schema
 
-const getAllTasks = (req, res) => {
-   res.send('get all tasks');
+const getAllTasks = async (req, res) => {
+   try {
+      const tasks = await Task.find({});
+      res.status(200).json({ tasks });
+   } catch (error) {
+      res.status(500).json({ msg: error });
+   }
 };
 
 // para el post en la ruta
 const createTask = async (req, res) => {
    // console.log(req.body); { name: 'testing', completed: true }
-   const task = await Task.create(req.body);
-   res.status(201).json({ task });
+   try {
+      const task = await Task.create(req.body);
+      res.status(201).json({ task });
+   } catch (error) {
+      res.status(500).json({ msg: error });
+   }
 };
 // lo q se manda en el .json(), a la DB solo se mandan las props q pongo en el schema, si tengo más en el req.body => se van a ignorar, en este caso la gracia es q lo q paso en el req.body tiene la misma forma q mi schema.
 // lo q se hace aquí es q:

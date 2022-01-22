@@ -4,9 +4,18 @@ const mongoose = require('mongoose');
 
 // 🔷
 const TaskSchema = new mongoose.Schema({
-   name: String,
-   completed: Boolean,
+   name: {
+      type: String,
+      required: [true, 'You must provide a name please.'],
+      trim: true,
+      maxlength: [20, 'The name can not be more than 20 characters'],
+   },
+   completed: {
+      type: Boolean,
+      default: false,
+   },
 });
+// para el caso en q no se cumple con los requerimientos hay q manejarlo como error en donde mongoose manda la data ( en el controller con un try-catch o alguno de esos )
 
 module.exports = mongoose.model('Task', TaskSchema);
 
