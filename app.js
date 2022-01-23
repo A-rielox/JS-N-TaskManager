@@ -13,7 +13,7 @@ app.use(express.static('./public'));
 // parse form json, xq la form se manda con javascript, para poner el contenido en el req.body
 app.use(express.json());
 
-//@@@@@@@@@@@@@@@@@@@@@@@@@ ROUTES
+// == ROUTES
 // Para user las rutas de task
 app.use('/api/v1/tasks', tasks);
 
@@ -23,7 +23,7 @@ app.use(notFound); // tiene q ir al final para poder ponerlo asi
 // para el manejo de los errores del wrapper, los q se van a ir por el next()
 app.use(errorHandlerMiddleware);
 //@@@@@@@@@@@@@@@@@@@@@@@@@ APP.LISTEN
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const start = async () => {
    // asi solo si se puede conectar a la DB => levanta el servidor
