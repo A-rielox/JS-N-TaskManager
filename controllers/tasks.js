@@ -1,5 +1,5 @@
 // '/api/v1/tasks'
-const Task = require('../models/task'); // el schema
+const Task = require('../models/task'); // el modelo
 const asyncWrapper = require('../middleware/async');
 const { createCustomError } = require('../errors/custom-error');
 
