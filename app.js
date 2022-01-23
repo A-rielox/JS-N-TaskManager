@@ -4,6 +4,7 @@ const tasks = require('./routes/tasks');
 const connectDB = require('./db/connect');
 require('dotenv').config(); // se instala con npm install dotenv
 const notFound = require('./middleware/not-found');
+const errorHandlerMiddleware = require('./middleware/error-handler');
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@ MIDDLEWARE
 // static assets
@@ -18,6 +19,9 @@ app.use('/api/v1/tasks', tasks);
 
 // el catch-all ( para las q no existan )
 app.use(notFound); // tiene q ir al final para poder ponerlo asi
+
+// para el manejo de los errores del wrapper, los q se van a ir por el next()
+app.use(errorHandlerMiddleware);
 //@@@@@@@@@@@@@@@@@@@@@@@@@ APP.LISTEN
 const port = 3000;
 
