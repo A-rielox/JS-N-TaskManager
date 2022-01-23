@@ -16,6 +16,7 @@ const TaskSchema = new mongoose.Schema({
    },
 });
 // para el caso en q no se cumple con los requerimientos hay q manejarlo como error en donde mongoose manda la data ( en el controller con un try-catch o alguno de esos )
+// en este caso el "asyncWrapper" lo va a mandar al custom error-handler a traves del next( ), x lo q se maneja en el error-handler.js y para este se manejaria en el q NO es instancia de CustomAPIError
 
 module.exports = mongoose.model('Task', TaskSchema);
 

@@ -22,6 +22,7 @@ app.use(notFound); // tiene q ir al final para poder ponerlo asi
 
 // para el manejo de los errores del wrapper, los q se van a ir por el next()
 app.use(errorHandlerMiddleware);
+
 //@@@@@@@@@@@@@@@@@@@@@@@@@ APP.LISTEN
 const port = process.env.PORT || 3000;
 
